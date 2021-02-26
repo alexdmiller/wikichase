@@ -46,6 +46,7 @@ printPageInfo(current)
 
 bad_words = ['category:', 'template:', 'help:', 'module:', 'wikipedia:', 'template talk:', 'file:', 'portal:', 'talk:', 'book:']
 
+counter = 0
 while True:
     guess = ''
 
@@ -70,7 +71,8 @@ while True:
                 print('\n'.join([c[0] for c in candidates]))
             
     current = loweredToLink[guess]
-
+    counter += 1
+    print('page', counter)
     printPageInfo(current)
 
 
