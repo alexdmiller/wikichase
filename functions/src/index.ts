@@ -4,8 +4,9 @@ import wiki from 'wikijs';
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
 //
-export const helloWorld = functions.https.onRequest(async (request, response) => {
-  const page = await wiki().page('Batman');
+export const getWikiPage = functions.https.onCall(async (data, context) => {
+  const pageName = data.page;
+  const page = await wiki().page(pageName);
   const fullHtml = await page.html();
-  response.send(fullHtml);
+  return fullHtml;
 });
